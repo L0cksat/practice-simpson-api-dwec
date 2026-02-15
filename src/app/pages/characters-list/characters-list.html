@@ -1,0 +1,19 @@
+<header class="text-center">
+  <h2>Character List</h2>
+</header>
+
+<div class="d-grid justify-content-center align-items-center">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-ls-4 g-4">
+    @for (character of characters; track character.id) {
+        <div class=""col-12 col-md-6 col-lg-3>
+            <div class="card h-100 text-center shadow-sm mx-auto" style="max-width: 250px;">
+                <img src="https://cdn.thesimpsonsapi.com/500{{ character.portrait_path }}" class="card-img-top p-3" alt="Image of {{ character.name }}" style="max-height: 200px; object-fit: contain;">
+                <div class="card-body">
+                    <h5 class="card-title">{{character.name}}</h5>
+                    <button class="btn-primary btn"><a [routerLink]="['/characters', character.id]" class="text-light text-decoration-none">View Details</a></button>
+                </div>
+            </div>
+        </div>
+    }
+  </div>
+</div>

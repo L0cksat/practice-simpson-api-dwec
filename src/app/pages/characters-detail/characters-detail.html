@@ -1,0 +1,42 @@
+<header>
+  <div class="d-flex justify-content-center align-items-center">
+    <button class="btn-primary btn m-2">
+      <a class="text-light text-decoration-none" routerLink="/characters">Back</a>
+    </button>
+  </div>
+
+  <h2 class="text-center">Character Detail</h2>
+</header>
+<div class="d-flex justify-content-center align-items-center mb-5">
+  @if (character$ | async; as c) {
+    <div class="card text-center" style="width: 18rem">
+      <img
+        class="card-img-top"
+        src="https://cdn.thesimpsonsapi.com/500{{ c.portrait_path }}"
+        alt="Image of {{ c.name }}"
+        title="Image of {{ c.name }}"
+        style="max-height: 200px; object-fit: contain;"
+      >
+      <div class="card-body bg-secondary-subtle">
+        <h5 class="card-title">{{ c.name }}</h5>
+        <h6 class="card-subtitle">{{ c.occupation }}</h6>
+        @if(c.age === null){
+            <p class="card-text badge bg-light text-black m-2">Age: unknown</p>
+        }@else {
+            <p class="card-text badge bg-light text-black m-2">Age: {{ c.age }}</p>
+        }
+        @if (c.birthdate !== null) {
+            <p class="card-text badge bg-light text-black">Date of Birth: {{ c.birthdate }}</p>
+        }@else {
+            <p class="card-text badge bg-light text-black m-2">Date of Birth: unknown</p>
+        }
+        <p class="card-text fst-italic fw-bold">"{{ c.randomPhrase }}"</p>
+        @if (c.status === 'Alive') {
+          <p class="badge bg-success">{{ c.status }}</p>
+        } @else {
+          <p class="badge bg-danger">{{ c.status }}</p>
+        }
+      </div>
+    </div>
+  }
+</div>

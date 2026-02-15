@@ -1,0 +1,17 @@
+.image-stack {
+  display: grid;
+  /* This centers everything if the images are different sizes */
+  place-items: center; 
+}
+
+/* Tell both images to occupy the FIRST cell of the grid */
+.image-stack > img {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* Optional: Make the top image slightly transparent or smaller */
+.top-img {
+  z-index: 2; /* Ensures it sits on top */
+  width: 80%; /* Example: make it smaller than the bg */
+}
